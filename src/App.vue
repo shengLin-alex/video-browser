@@ -1,7 +1,8 @@
 <template>
     <div class="container">
         <SearchBar @termChange="onTermChange"></SearchBar>
-        <VideoList :videos="videos"></VideoList>
+        <VideoDetail :selectedVideo="selectedVideo"></VideoDetail>
+        <VideoList :videos="videos" @videoSelect="onVideoSelect"></VideoList>
     </div>
 </template>
 
@@ -10,6 +11,7 @@
     import axios from 'axios';
     import SearchBar from './components/SearchBar';
     import VideoList from './components/VideoList';
+    import VideoDetail from './components/VideoDetail';
 
     // youtube api key
     const API_KEY = 'AIzaSyDZaXkH77yH_h4Ofas8T66QGVMwfQF5-OE';
@@ -19,10 +21,14 @@
         components: {
             SearchBar,
             VideoList,
+            VideoDetail
         },
         // vue component 的 data 必須是 function return obj
         data() {
-            return { videos: [] };
+            return {
+                videos: [],
+                selectedVideo: null
+            };
         },
         methods: {
             onTermChange(searchTerm) {
@@ -35,8 +41,11 @@
                     }
                 }).then(res => {
                     this.videos = res.data.items;
-                    console.log(res.data.items);
                 });
+            },
+
+            onVideoSelect(video) {
+                this.selectedVideo = video;
             }
         }
     };
