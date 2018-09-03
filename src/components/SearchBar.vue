@@ -18,6 +18,14 @@
     };
 </script>
 
-<style>
+<!-- scoped 只做用在這個元件 -->
+<style scoped>
+    input {
+        width: 75%;
+    }
 
+    div {
+        text-align: center;
+        margin: 20px;
+    }
 </style>

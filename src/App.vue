@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <SearchBar @termChange="onTermChange"></SearchBar>
         <VideoList :videos="videos"></VideoList>
     </div>
@@ -35,6 +35,7 @@
                     }
                 }).then(res => {
                     this.videos = res.data.items;
+                    console.log(res.data.items);
                 });
             }
         }
