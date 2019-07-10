@@ -15,8 +15,8 @@
     import VideoList from './components/VideoList';
     import VideoDetail from './components/VideoDetail';
 
-    // youtube api key
-    const API_KEY = 'AIzaSyDZaXkH77yH_h4Ofas8T66QGVMwfQF5-OE';
+    // YOUTUBE API KEY
+    const API_KEY = process.env.VUE_APP_YOUTUBE_APIKEY;
 
     export default {
         name: 'App',
